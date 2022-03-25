@@ -1,21 +1,35 @@
 {
-  "name": "tailwindcss-notes",
+  "name": "generator-tailwind",
   "version": "1.0.0",
-  "description": "Tailwindcss notes.",
-  "homepage": "https://github.com/afeiship/tailwindcss-notes",
+  "description": "Yeoman generator for tailwind.",
+  "homepage": "https://github.com/afeiship/generator-tailwind",
   "author": {
-    "name": "afei",
-    "email": "1290657123@qq.com"
+    "name": "afeiship",
+    "email": "1290657123@qq.com",
+    "url": "https://js.work"
   },
-  "main": "index.js",
-  "license": "MIT",
-  "scripts": {
-    "tw:build": "npx tailwindcss build ./src/styles.css -o ./dist/output.css"
+  "files": [
+    "generators"
+  ],
+  "main": "generators/index.js",
+  "keywords": [
+    "yeoman",
+    "yo",
+    "tailwind",
+    "css",
+    "yeoman-generator"
+  ],
+  "devDependencies": {
+    "prettier": "^1.19.1"
+  },
+  "engines": {
+    "npm": ">= 4.0.0"
   },
   "dependencies": {
-    "tailwindcss": "^1.8.2"
+    "yeoman-generator": "^3.1.1",
+    "chalk": "^2.1.0",
+    "yosay": "^2.0.2"
   },
-  "devDependencies": {
-    "express": "^4.17.1"
-  }
+  "repository": "git@github.com:afeiship/generator-tailwind.git",
+  "license": "MIT"
 }
