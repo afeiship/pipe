@@ -2,6 +2,9 @@
 const Generator = require("yeoman-generator");
 const chalk = require("chalk");
 const yosay = require("yosay");
+const globby = require("globby");
+const { resolve } = require("path");
+const mkdirp = require("mkdirp");
 
 module.exports = class extends Generator {
   prompting() {
@@ -16,20 +19,25 @@ module.exports = class extends Generator {
   }
 
   writing() {
+    // prepare
+    const stylesPath = this.destinationPath(this.options.styles);
+    mkdirp.sync(stylesPath);
+
     // tailwind dir
     this.fs.copy(
-      this.templatePath("tailwind/**"),
-      this.destinationPath(this.option.styles)
+      globby.sync(this.templatePath("tailwind/**"), { dot: true }),
+      stylesPath
     );
 
     // tailwind.config.js
     this.fs.copy(
       this.templatePath("tailwind.config.js"),
-      this.destinationPath()
+      this.destinationPath(resolve("tailwind.config.js"))
     );
   }
 
   end() {
     console.log(`Add '@import "tailwind/dst.css";' to your style files`);
   }
+
 };

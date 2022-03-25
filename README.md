@@ -7,6 +7,12 @@ npm i classnames
 npm i tailwind -D
 ```
 
+## usage
+```shell
+# default path is: ./src/assets/styles
+yo @jswork/tailwind --styles="./styles"
+```
+
 ## .eslint
 ```js
 {

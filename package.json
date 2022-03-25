@@ -1,5 +1,5 @@
 {
-  "name": "generator-tailwind",
+  "name": "@jswork/generator-tailwind",
   "version": "1.0.0",
   "description": "Yeoman generator for tailwind.",
   "homepage": "https://github.com/afeiship/generator-tailwind",
@@ -26,8 +26,10 @@
     "npm": ">= 4.0.0"
   },
   "dependencies": {
-    "yeoman-generator": "^3.1.1",
     "chalk": "^2.1.0",
+    "globby": "^8.0.2",
+    "mkdirp": "^1.0.4",
+    "yeoman-generator": "^3.1.1",
     "yosay": "^2.0.2"
   },
   "repository": "git@github.com:afeiship/generator-tailwind.git",
