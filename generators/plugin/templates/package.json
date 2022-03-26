@@ -5,9 +5,6 @@
   "homepage": "https://github.com/afeiship/<%= project_name %>",
   "main": "src/index.js",
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
   "prettier": {
     "printWidth": 100,
     "semi": false,
