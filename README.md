@@ -11,6 +11,7 @@ npm i tailwind -D
 ```shell
 # default path is: ./src/assets/styles
 yo @jswork/tailwind --styles="./styles"
+yo @jswork/tailwind:plugin
 ```
 
 ## .eslint
