@@ -2,8 +2,6 @@
 const Generator = require("yeoman-generator");
 const chalk = require("chalk");
 const yosay = require("yosay");
-const { resolve } = require("path");
-const mkdirp = require("mkdirp");
 const getp = require("@jswork/generator-prompts");
 const prompts = getp(["scope", "registry", "project_name", "description"]);
 const globby = require("globby");
@@ -23,13 +21,10 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    // prepare
-    console.log("writing.");
+    this.fs.copyTpl(
+      globby.sync(this.templatePath("**"), { dot: true }),
+      this.destinationPath(),
+      this.props
+    );
   }
-
-  end() {
-    console.log(`Add '@import "tailwind/dst.css";' to your style files`);
-  }
-
-  __copy() {}
 };
