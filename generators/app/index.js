@@ -46,9 +46,11 @@ module.exports = class extends Generator {
   }
 
   __extendJSON() {
+    const scripts = `tailwindcss -i ${this.options.styles}/tailwind/src.css -o ${this.options.styles}/tailwind/dst.css`;
     const pkgJson = {
       scripts: {
-        tailwind: `tailwindcss -i ${this.options.styles}/tailwind/src.css -o ${this.options.styles}/tailwind/dst.css --watch`
+        "tailwind:watch": `${scripts} --watch`,
+        "tailwind:build": `${scripts} --minify`
       }
     };
 
