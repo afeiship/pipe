@@ -19,6 +19,15 @@ module.exports = class extends Generator {
   }
 
   writing() {
+    this.__copy();
+    this.__extendJSON();
+  }
+
+  end() {
+    console.log(`Add '@import "tailwind/dst.css";' to your style files`);
+  }
+
+  __copy() {
     // prepare
     const stylesPath = this.destinationPath(this.options.styles);
     mkdirp.sync(stylesPath);
@@ -36,8 +45,14 @@ module.exports = class extends Generator {
     );
   }
 
-  end() {
-    console.log(`Add '@import "tailwind/dst.css";' to your style files`);
-  }
+  __extendJSON() {
+    const pkgJson = {
+      scripts: {
+        tailwind: `tailwindcss -i ${this.options.styles}/tailwind/src.css -o ${this.options.styles}/tailwind/dst.css --watch`
+      }
+    };
 
+    // Extend or create package.json file in destination path
+    this.fs.extendJSON(this.destinationPath("package.json"), pkgJson);
+  }
 };
