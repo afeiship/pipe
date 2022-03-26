@@ -7,7 +7,6 @@ module.exports = plugin(
     matchUtilities(
       {
         'line-clamp': value => ({
-          ...baseStyles,
           '-webkit-line-clamp': `${value}`,
         }),
       },
