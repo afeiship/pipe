@@ -15,7 +15,37 @@ npm install @jswork/pipe
 ```js
 import pipe from '@jswork/pipe';
 
-// usage goes here.
+// 示例函数
+function addOne(n: number): number {
+  return n + 1;
+}
+
+function double(n: number): number {
+  return n * 2;
+}
+
+function divide(n: number): number {
+  if (n === 0) {
+    throw new Error('Divide by zero error.');
+  }
+  return 10 / n;
+}
+
+// 使用管道
+const calculate = pipeSync(
+  addOne,
+  double,
+  divide,
+  addOne
+);
+
+const result1 = calculate(3);
+const result2 = calculate(-1);
+
+// has result, without log
+console.log('Result1:', result1); // 10 / (3 + 1)*2  + 1
+// has result, but with warning log
+console.log('Result2:', result2); // 10 / (-1+1)*2 + 1
 ```
 
 ## license

@@ -3,6 +3,32 @@ import pipe from '../src';
 const pipeSync = pipe.sync;
 const pipeAync = pipe.async;
 
+describe('Example', () => {
+  // 示例函数
+  function addOne(n: number): number {
+    return n + 1;
+  }
+
+  function double(n: number): number {
+    return n * 2;
+  }
+
+  function divide(n: number): number {
+    if (n === 0) {
+      throw new Error('Divide by zero error.');
+    }
+    return 10 / n;
+  }
+
+  // 使用管道
+  const calculate = pipeSync(addOne, double, divide, addOne);
+
+  const result1 = calculate(3);
+  const result2 = calculate(-1);
+  console.log(result1, result2);
+  // expect(result).toBe(2.25);
+});
+
 describe('Test for pipe', () => {
   test('All sync functions', async () => {
     const add = (x: number) => x + 1;
