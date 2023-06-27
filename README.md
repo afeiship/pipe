@@ -36,8 +36,8 @@ function divide(n: number): number {
   return 10 / n;
 }
 
-// 使用管道
-const calculate = pipeSync(
+// use pipe
+const calculate = pipe(
   addOne,
   double,
   divide,
