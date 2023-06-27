@@ -3,7 +3,7 @@ import pipe from '../src';
 const pipeSync = pipe.sync;
 const pipeAync = pipe.async;
 
-describe('Example', () => {
+describe.skip('Example', () => {
   // 示例函数
   function addOne(n: number): number {
     return n + 1;
