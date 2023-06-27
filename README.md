@@ -11,6 +11,11 @@
 npm install @jswork/pipe
 ```
 
+## methods
+- [x] pipe === pipe.sync
+- [x] pipe.sync (default)
+- [x] pipe.async
+
 ## usage
 ```js
 import pipe from '@jswork/pipe';
