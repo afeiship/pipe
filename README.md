@@ -1,40 +1,34 @@
-# generator-tailwind
-> Yeoman generator for tailwind.
+# pipe
+> Pipe is a lightweight JavaScript library for function composition and execution.
+
+[![version][version-image]][version-url]
+[![license][license-image]][license-url]
+[![size][size-image]][size-url]
+[![download][download-image]][download-url]
 
 ## installation
 ```shell
-npm i classnames
-npm i tailwind -D
+npm install @jswork/pipe
 ```
 
 ## usage
-```shell
-# default path is: ./src/assets/styles
-yo @jswork/tailwind --styles="./styles"
-yo @jswork/tailwind:plugin
-```
-
-## .eslint
 ```js
-{
-  // ...
-  "globals": {
-    "window": true,
-    "cx": true
-  }
-}
+import pipe from '@jswork/pipe';
+
+// usage goes here.
 ```
 
-## global.d.ts
-```ts
-declare global {
-  const cx: any;
-}
-```
+## license
+Code released under [the MIT license](https://github.com/afeiship/pipe/blob/master/LICENSE.txt).
 
-## scripts
-```json
-{
-  "tailwind:watch": "tailwindcss -i ./src/assets/styles/tailwind/src.css -o ./src/assets/styles/tailwind/dst.css --watch"
-}
-```
+[version-image]: https://img.shields.io/npm/v/@jswork/pipe
+[version-url]: https://npmjs.org/package/@jswork/pipe
+
+[license-image]: https://img.shields.io/npm/l/@jswork/pipe
+[license-url]: https://github.com/afeiship/pipe/blob/master/LICENSE.txt
+
+[size-image]: https://img.shields.io/bundlephobia/minzip/@jswork/pipe
+[size-url]: https://github.com/afeiship/pipe/blob/master/dist/pipe.min.js
+
+[download-image]: https://img.shields.io/npm/dm/@jswork/pipe
+[download-url]: https://www.npmjs.com/package/@jswork/pipe
