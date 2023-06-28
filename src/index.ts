@@ -8,8 +8,8 @@ function pipe<T>(...functions: PipeSyncFunction<T>[]): PipeSyncFunction<T> {
     return functions.reduce((output: T, func: PipeSyncFunction<T>) => {
       try {
         return func(output);
-      } catch (error: any) {
-        console.log('Function execution skipped:', error.message);
+      } catch (error) {
+        console.error('Function execution skipped:', error);
         return output;
       }
     }, input);
@@ -23,8 +23,8 @@ function pipeAsync<T>(...functions: PipeAsyncFunction<T>[]): PipeAsyncFunction<T
         const output = await acc;
         const result = await Promise.resolve(func(output));
         return result;
-      } catch (error: any) {
-        console.log('Function execution skipped:', error.message);
+      } catch (error) {
+        console.error('Function execution skipped:', error);
         return acc;
       }
     }, Promise.resolve(input));
