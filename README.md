@@ -20,7 +20,7 @@ npm install @jswork/pipe
 ```js
 import pipe from '@jswork/pipe';
 
-// 示例函数
+// fns
 function addOne(n: number): number {
   return n + 1;
 }

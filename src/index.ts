@@ -9,7 +9,7 @@ function pipe<T>(...functions: PipeSyncFunction<T>[]): PipeSyncFunction<T> {
       try {
         return func(output);
       } catch (error: any) {
-        console.log('Function execution skipped:', error);
+        console.log('Function execution skipped:', error.message);
         return output;
       }
     }, input);
