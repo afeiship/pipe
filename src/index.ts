@@ -1,10 +1,10 @@
 declare var wx: any;
 
-type PipeAsyncFunction<T> = (input: T) => T | Promise<T>;
-type PipeSyncFunction<T> = (input: T) => T;
+type PipeAsyncFunction<T> = (input: any) => T | Promise<T>;
+type PipeSyncFunction<T> = (input: any) => T;
 
 function pipe<T>(...functions: PipeSyncFunction<T>[]): PipeSyncFunction<T> {
-  return function (input: T): T {
+  return function (input: any): T {
     return functions.reduce((output: T, func: PipeSyncFunction<T>) => {
       try {
         return func(output);
@@ -17,7 +17,7 @@ function pipe<T>(...functions: PipeSyncFunction<T>[]): PipeSyncFunction<T> {
 }
 
 function pipeAsync<T>(...functions: PipeAsyncFunction<T>[]): PipeAsyncFunction<T> {
-  return async function (input: T): Promise<T> {
+  return async function (input: any): Promise<T> {
     return functions.reduce(async (acc: Promise<T>, func: PipeAsyncFunction<T>) => {
       try {
         const output = await acc;

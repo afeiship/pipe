@@ -3,7 +3,9 @@ import pipe from '../src';
 const pipeSync = pipe.sync;
 const pipeAync = pipe.async;
 
-describe.skip('Example', () => {
+// 这里面有 throw error 是正常的，不必理会
+
+describe('Example', () => {
   // 示例函数
   function addOne(n: number): number {
     return n + 1;
