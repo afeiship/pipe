@@ -1,6 +1,6 @@
 {
   "name": "@jswork/pipe",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Pipe is a lightweight JavaScript library for function composition and execution.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
