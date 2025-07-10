@@ -48,9 +48,9 @@ const result1 = calculate(3);
 const result2 = calculate(-1);
 
 // has result, without log
-console.log('Result1:', result1); // 10 / (3 + 1)*2  + 1
+console.log('Result1:', result1); // 10 / (3 + 1)*2  + 1 = 2.25
 // has result, but with warning log
-console.log('Result2:', result2); // 10 / (-1+1)*2 + 1
+console.log('Result2:', result2); // 10 / (-1+1)*2 + 1 => Throw error: Divide by zero error.
 ```
 
 ## license
