@@ -53,6 +53,10 @@ console.log('Result1:', result1); // 10 / (3 + 1)*2  + 1 = 2.25
 console.log('Result2:', result2); // 10 / (-1+1)*2 + 1 => Throw error: Divide by zero error.
 ```
 
+## difference between pipe and compose
+- compose：常见于函数式编程库如 Redux、Ramda，因为其与数学定义一致。
+- pipe：常见于像 Elm、F# 或者 RxJS 中，因为它更符合“先做什么，再做什么”的自然阅读顺序。
+
 ## license
 Code released under [the MIT license](https://github.com/afeiship/pipe/blob/master/LICENSE.txt).
 
