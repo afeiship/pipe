@@ -19,6 +19,15 @@ describe('pipe', () => {
     expect(piped(5)).toBe((5 + 1) * 2 - 3);
   });
 
+  it('should pipe functions from left to right when given an array', () => {
+    const add = (x: number) => x + 1;
+    const multiply = (x: number) => x * 2;
+    const subtract = (x: number) => x - 3;
+
+    const piped = pipe([add, multiply, subtract]);
+    expect(piped(5)).toBe((5 + 1) * 2 - 3);
+  });
+
   it('should handle initial input correctly', () => {
     const add = (x: number) => x + 1;
     const piped = pipe(add);
@@ -46,6 +55,25 @@ describe('pipe.async', () => {
     };
 
     const piped = pipe.async(asyncAdd, asyncMultiply, asyncSubtract);
+    const result = await piped(5);
+    expect(result).toBe((5 + 1) * 2 - 3);
+  });
+
+  it('should pipe async functions from left to right when given an array', async () => {
+    const asyncAdd = async (x: number) => {
+      await new Promise(resolve => setTimeout(resolve, 10));
+      return x + 1;
+    };
+    const asyncMultiply = async (x: number) => {
+      await new Promise(resolve => setTimeout(resolve, 10));
+      return x * 2;
+    };
+    const asyncSubtract = async (x: number) => {
+      await new Promise(resolve => setTimeout(resolve, 10));
+      return x - 3;
+    };
+
+    const piped = pipe.async([asyncAdd, asyncMultiply, asyncSubtract]);
     const result = await piped(5);
     expect(result).toBe((5 + 1) * 2 - 3);
   });

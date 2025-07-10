@@ -3,9 +3,13 @@ declare var wx: any;
 type PipeAsyncFunction<T> = (input: any) => T | Promise<T>;
 type PipeSyncFunction<T> = (input: any) => T;
 
-function pipe<T>(...functions: PipeSyncFunction<T>[]): PipeSyncFunction<T> {
+// 支持 pipe(add, mul, sub) 和 pipe([add, mul, sub])
+function pipe<T>(...functions: PipeSyncFunction<T>[]): PipeSyncFunction<T>;
+function pipe<T>(functions: PipeSyncFunction<T>[]): PipeSyncFunction<T>;
+function pipe<T>(...args: any[]): PipeSyncFunction<T> {
+  const fns = Array.isArray(args[0]) ? args[0] : args;
   return function (input: any): T {
-    return functions.reduce((output: T, func: PipeSyncFunction<T>) => {
+    return fns.reduce((output: T, func: PipeSyncFunction<T>) => {
       try {
         return func(output);
       } catch (error) {
@@ -16,9 +20,12 @@ function pipe<T>(...functions: PipeSyncFunction<T>[]): PipeSyncFunction<T> {
   };
 }
 
-function pipeAsync<T>(...functions: PipeAsyncFunction<T>[]): PipeAsyncFunction<T> {
+function pipeAsync<T>(...functions: PipeAsyncFunction<T>[]): PipeAsyncFunction<T>;
+function pipeAsync<T>(functions: PipeAsyncFunction<T>[]): PipeAsyncFunction<T>;
+function pipeAsync<T>(...args: any[]): PipeAsyncFunction<T> {
+  const fns = Array.isArray(args[0]) ? args[0] : args;
   return async function (input: any): Promise<T> {
-    return functions.reduce(async (acc: Promise<T>, func: PipeAsyncFunction<T>) => {
+    return fns.reduce(async (acc: Promise<T>, func: PipeAsyncFunction<T>) => {
       try {
         const output = await acc;
         const result = await Promise.resolve(func(output));
