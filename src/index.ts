@@ -42,8 +42,8 @@ pipe.async = pipeAsync;
 pipe.sync = pipe;
 
 // for commonjs es5 require
-if (typeof module !== 'undefined' && module.exports && typeof wx === 'undefined') {
-  module.exports = pipe;
-}
+// if (typeof module !== 'undefined' && module.exports && typeof wx === 'undefined') {
+//   module.exports = pipe;
+// }
 
 export default pipe;
